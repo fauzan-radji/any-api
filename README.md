@@ -30,7 +30,7 @@ Any Api is a project that contains any rest apis that I need, and maybe you need
 
 ## APIs
 
-- [ ] Movie API
+- [ ] [Movie API](./docs/movie.md)
 
 <p align="right"><a href="#table-of-contents">⬆️ Back to table of contents</a></p>
 
@@ -59,20 +59,30 @@ Any Api is a project that contains any rest apis that I need, and maybe you need
    cp .env.local.example .env.local
    ```
 
-3. Install the dependencies
+3. Fill in the environment variables in the `.env.local` file
+
+   ```bash
+   DB_SEED_KEY=your_seed_key
+   ```
+
+   Change `your_seed_key` with your own seed key. You can put literally anything here, but make sure it's a secret because it will be used to seed the database via the API. If you have better suggestions for this, please [let me know][issue].
+
+4. Install the dependencies
 
    ```bash
    cd any-api
    npm install
    ```
 
-4. Run the development server
+5. Run the development server
 
    ```bash
    npm run dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+6. Open [http://localhost:3000/seed?key=your_seed_key](http://localhost:3000/seed?key=your_seed_key) with your browser to seed the database. Change `your_seed_key` with the seed key you set in the `.env.local` file. If you have better suggestions for this, please [let me know][issue].
+
+7. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 <p align="right"><a href="#table-of-contents">⬆️ Back to table of contents</a></p>
 
