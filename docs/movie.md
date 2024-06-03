@@ -1,21 +1,9 @@
 # Movie API
 
-### Schema
+## Base URL
 
-#### Movie
-
-```typescript
-type Movie = {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  releaseDate: Date;
-  ageRating: number;
-  poster: string;
-  createdAt: string;
-  updatedAt: string;
-};
+```
+https://any-api.vercel.app/movies
 ```
 
 ## Endpoints
@@ -24,12 +12,12 @@ type Movie = {
   <summary><h3>Movies</h3></summary>
 
 - <details>
-  <summary><h4>Get all movies</h4></summary>
+    <summary><h4>Get all movies</h4></summary>
 
   Returns all movies with pagination. You can also search for movies by providing a query parameter.
 
   ```http
-  GET /api/movies
+  GET /movies
   ```
 
   ##### Parameters
@@ -44,7 +32,7 @@ type Movie = {
 
   ```json
   {
-    "message": "Success",
+    "message": "Movies fetched successfully",
     "page": 1,
     "limit": 2,
     "totalPages": 4,
@@ -76,15 +64,6 @@ type Movie = {
   }
   ```
 
-  ##### Error Response
-
-  ```json
-  {
-    "message": "Failed",
-    "error": "Failed to get movies"
-  }
-  ```
-
   </details>
 
 - <details>
@@ -93,7 +72,7 @@ type Movie = {
   Returns a movie by its ID.
 
   ```http
-  GET /api/movies/:id
+  GET /movies/:id
   ```
 
   ##### Parameters
@@ -106,7 +85,7 @@ type Movie = {
 
   ```json
   {
-    "message": "Success",
+    "message": "Movie fetched successfully",
     "data": {
       "id": 1,
       "title": "Avatar",
@@ -123,11 +102,35 @@ type Movie = {
 
   ##### Error Response
 
-  ```json
-  {
-    "message": "Failed",
-    "error": "Failed to get movie"
-  }
-  ```
+  - **404**
 
-  </details>
+    ```json
+    {
+      "message": "Movie not found"
+    }
+    ```
+
+    </details>
+
+</details>
+
+## Schema
+
+<details>
+  <summary><h3>Movie</h3></summary>
+
+```typescript
+type Movie = {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  releaseDate: Date;
+  ageRating: number;
+  poster: string;
+  createdAt: string;
+  updatedAt: string;
+};
+```
+
+</details>

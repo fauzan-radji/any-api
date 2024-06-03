@@ -11,13 +11,14 @@ export async function GET(request: NextRequest) {
   const movies = Movie.paginate(page, limit, (movie) =>
     movie.title.toLowerCase().includes(query.toLowerCase())
   );
+  const moviesCount = Movie.count();
 
   return NextResponse.json({
-    message: "Hello World!",
+    message: "Movies fetched successfully",
     page,
     limit,
-    totalPage: Math.ceil(Movie.count() / limit),
-    totalData: Movie.count(),
+    totalPage: Math.ceil(moviesCount / limit),
+    totalData: moviesCount,
     data: movies,
   });
 }
