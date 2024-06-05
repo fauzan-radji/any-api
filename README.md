@@ -63,9 +63,12 @@ Any Api is a project that contains any rest apis that I need, and maybe you need
 
    ```bash
    DB_SEED_KEY=your_seed_key
+   JWT_SECRET=your_jwt_secret
+   SALT_ROUNDS=10
+   ENVIRONMENT=development
    ```
 
-   Change `your_seed_key` with your own seed key. You can put literally anything here, but make sure it's a secret because it will be used to seed the database via the API. If you have better suggestions for this, please [let me know][issue].
+   Change `your_seed_key` with your own seed key. You can put literally anything here, but make sure it's a secret because it will be used to seed the database via the API. If you have better suggestions for this, please [let me know][issue]. The `JWT_SECRET` is used to sign the JWT token. The `SALT_ROUNDS` is used to hash the password. The `ENVIRONMENT` is used to determine the environment of the app change it to `production` when deploying to production.
 
 4. Install the dependencies
 
@@ -80,8 +83,14 @@ Any Api is a project that contains any rest apis that I need, and maybe you need
    npm run dev
    ```
 
-6. Open [http://localhost:3000/seed?key=your_seed_key](http://localhost:3000/seed?key=your_seed_key) with your browser to seed the database. Change `your_seed_key` with the seed key you set in the `.env.local` file. If you have better suggestions for this, please [let me know][issue].
+<!-- 6. Open [http://localhost:3000/seed?key=your_seed_key](http://localhost:3000/seed?key=your_seed_key) with your browser to seed the database. Change `your_seed_key` with the seed key you set in the `.env.local` file. If you have better suggestions for this, please [let me know][issue]. -->
 
+6. Create a `POST` request to `http://localhost:3000/seed` with the following body to seed the database. Change `your_seed_key` with the seed key you set in the `.env.local` file. If you have better suggestions for this, please [let me know][issue].
+   ```json
+   {
+     "key": "your_seed_key"
+   }
+   ```
 7. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 <p align="right"><a href="#table-of-contents">⬆️ Back to table of contents</a></p>

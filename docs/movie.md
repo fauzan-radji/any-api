@@ -114,6 +114,117 @@ https://any-api.vercel.app/movies
 
 </details>
 
+<details>
+  <summary><h3>Auth</h3></summary>
+
+- <details>
+        <summary><h4>Login</h4></summary>
+
+  Authenticating user
+
+  ```http
+  POST /login
+  ```
+
+  ##### Body
+
+  **Content-Type:** `application/json`
+
+  |    Name    |   Type   | Description |      Required      | Default |
+  | :--------: | :------: | ----------- | :----------------: | :-----: |
+  | `username` | `string` | Username    | :white_check_mark: |    -    |
+  | `password` | `string` | Password    | :white_check_mark: |    -    |
+
+  ##### Success Response
+
+  ```json
+  {
+    "message": "User login successfully",
+    "data": {
+      "id": 1,
+      "name": "Fauzan",
+      "username": "fauzan",
+      "email": "fauzan@email.com",
+      "birthDate": "2003-10-04T00:00:00.000Z"
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE3NTkyMjI3fQ.6NPkITZXL88T7KiGGDFZmUvO0glw7FodkqACRZiC0dg"
+  }
+  ```
+
+  ##### Error Response
+
+  - **401**
+
+    ```json
+    {
+      "message": "Invalid username or password"
+    }
+    ```
+
+    </details>
+
+- <details>
+      <summary><h4>Signup</h4></summary>
+
+  Registering a new user
+
+  ```http
+  POST /signup
+  ```
+
+  ##### Body
+
+  **Content-Type:** `application/json`
+
+  |    Name     |   Type   | Description |      Required      | Default |
+  | :---------: | :------: | ----------- | :----------------: | :-----: |
+  |   `name`    | `string` | Name        | :white_check_mark  |    -    |
+  | `username`  | `string` | Username    | :white_check_mark: |    -    |
+  |   `email`   | `string` | Email       | :white_check_mark: |    -    |
+  | `password`  | `string` | Password    | :white_check_mark: |    -    |
+  | `birthDate` | `string` | Birth date  | :white_check_mark: |    -    |
+
+  ##### Success Response
+
+  ```json
+  {
+    "message": "User created successfully",
+    "data": {
+      "id": 2,
+      "name": "Malik Matoha",
+      "username": "malik",
+      "email": "malik@email.com",
+      "birthDate": "2003-10-04T00:00:00.000Z"
+    }
+  }
+  ```
+
+  ##### Error Response
+
+  - **400**
+
+    ```json
+    {
+      "message": "All fields are required"
+    }
+    ```
+
+    ```json
+    {
+      "message": "Username is already taken"
+    }
+    ```
+
+    ```json
+    {
+      "message": "Email already taken"
+    }
+    ```
+
+    </details>
+
+</details>
+
 ## Schema
 
 <details>
@@ -128,6 +239,24 @@ type Movie = {
   releaseDate: Date;
   ageRating: number;
   poster: string;
+  createdAt: string;
+  updatedAt: string;
+};
+```
+
+</details>
+
+<details>
+  <summary><h3>User</h3></summary>
+
+```typescript
+type User = {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  password: number;
+  birthDate: Date;
   createdAt: string;
   updatedAt: string;
 };

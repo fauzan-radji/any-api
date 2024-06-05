@@ -14,6 +14,7 @@ export default class Movie extends Model {
   // FIXME: This is a workaround for a bug in the json-modelizer package.
   // At the time of writing this code (01-06-2024), the json-modelizer package
   // does not automatically infer the types of the fields from the schema.
+  id!: number;
   title!: string;
   description!: string;
   price!: number;
