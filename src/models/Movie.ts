@@ -1,5 +1,7 @@
 import { Field, Model } from "json-modelizer";
 
+import type Seat from "./Seat";
+
 export default class Movie extends Model {
   static _table = "movies";
   static schema = {
@@ -21,4 +23,16 @@ export default class Movie extends Model {
   releaseDate!: Date;
   ageRating!: number;
   poster!: string;
+
+  seats!: Seat[];
+
+  toJSON() {
+    return {
+      ...this,
+      seats: this.seats.map((seat) => {
+        const { movie, ...rest } = seat;
+        return rest;
+      }),
+    };
+  }
 }

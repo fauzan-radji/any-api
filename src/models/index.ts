@@ -1,15 +1,19 @@
 import Movie from "./Movie";
-import User from "./User";
 import Order from "./Order";
+import Seat from "./Seat";
 import Ticket from "./Ticket";
+import User from "./User";
 
-Order.hasMany(Ticket).as("tickets");
-Ticket.belongsTo(Order).as("order");
+Movie.hasMany(Seat).as("seats").foreignKey("movieId");
+Seat.belongsTo(Movie).as("movie").foreignKey("movieId");
 
-User.hasMany(Order).as("orders");
-Order.belongsTo(User).as("user");
+// Seat.hasOne(Ticket).as("ticket").foreignKey("seatId");
+// Ticket.belongsTo(Seat).as("seat").foreignKey("seatId");
 
-Movie.hasMany(Order).as("orders");
-Order.belongsTo(Movie).as("movie");
+// Order.hasMany(Ticket).as("tickets").foreignKey("orderId");
+// Ticket.belongsTo(Order).as("order").foreignKey("orderId");
 
-export { Movie, User, Order, Ticket };
+// User.hasMany(Order).as("orders").foreignKey("userId");
+// Order.belongsTo(User).as("user").foreignKey("userId");
+
+export { Movie, User, Order, Ticket, Seat };

@@ -107,6 +107,67 @@ https://any-api.vercel.app/movies
     **Status:** 404\
     **Status Text:** Movie not found
 
+  </details>
+
+- <details>
+      <summary><h4>Get seats of a movie</h4></summary>
+
+  Returns seats of a movie.
+
+  ```http
+  GET /movies/:id/seats
+  ```
+
+  ##### Parameters
+
+  | Name |   Type   | Description  |      Required      | Default |
+  | :--: | :------: | ------------ | :----------------: | :-----: |
+  | `id` | `number` | The movie ID | :heavy_check_mark: |    -    |
+
+  ##### Success Response
+
+  ```json
+  {
+    "message": "Movie fetched successfully",
+    "data": {
+      "id": 1,
+      "title": "Avatar",
+      "description": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+      "price": 10000,
+      "releaseDate": "2009-12-18T00:00:00.000Z",
+      "ageRating": 13,
+      "poster": "https://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
+      "seats": [
+        {
+          "id": 1,
+          "number": 1,
+          "isReserved": false,
+          "movieId": 1,
+          "createdAt": "2024-06-06T12:00:26.164Z",
+          "updatedAt": "2024-06-06T12:00:26.164Z"
+        },
+        {
+          "id": 2,
+          "number": 2,
+          "isReserved": false,
+          "movieId": 1,
+          "createdAt": "2024-06-06T12:00:26.173Z",
+          "updatedAt": "2024-06-06T12:00:26.173Z"
+        }
+      ],
+      "createdAt": "2024-06-06T12:00:26.003Z",
+      "updatedAt": "2024-06-06T12:00:26.003Z"
+    }
+  }
+  ```
+
+  ##### Error Response
+
+  - Movie not found
+
+    **Status:** 404\
+    **Status Text:** Movie not found
+
     </details>
 
 </details>
@@ -265,25 +326,6 @@ https://any-api.vercel.app/movies
 ## Schema
 
 <details>
-  <summary><h3>Movie</h3></summary>
-
-```typescript
-type Movie = {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  releaseDate: Date;
-  ageRating: number;
-  poster: string;
-  createdAt: string;
-  updatedAt: string;
-};
-```
-
-</details>
-
-<details>
   <summary><h3>User</h3></summary>
 
 ```typescript
@@ -297,6 +339,45 @@ type User = {
   balance: number;
   createdAt: string;
   updatedAt: string;
+};
+```
+
+</details>
+
+<details>
+  <summary><h3>Movie</h3></summary>
+
+```typescript
+type Movie = {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  releaseDate: Date;
+  ageRating: number;
+  poster: string;
+  createdAt: string;
+  updatedAt: string;
+
+  seats: Seat[];
+};
+```
+
+</details>
+
+<details>
+  <summary><h3>Seat</h3></summary>
+
+```typescript
+type Seat = {
+  id: number;
+  number: number;
+  isReserved: boolean;
+  createdAt: string;
+  updatedAt: string;
+
+  movieId: number;
+  movie: Movie;
 };
 ```
 
