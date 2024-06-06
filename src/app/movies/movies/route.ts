@@ -1,6 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
 import { Movie } from "@/models";
+import { Response } from "@/response";
 
 export async function GET(request: NextRequest) {
   const url = new URL(request.url);
@@ -13,12 +14,10 @@ export async function GET(request: NextRequest) {
   );
   const moviesCount = Movie.count();
 
-  return NextResponse.json({
-    message: "Movies fetched successfully",
+  return Response.success(movies, "Movies fetched successfully", {
     page,
     limit,
     totalPage: Math.ceil(moviesCount / limit),
     totalData: moviesCount,
-    data: movies,
   });
 }

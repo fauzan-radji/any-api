@@ -18,6 +18,7 @@ export default class UserSeeder {
       username: "fauzan",
       password: crypted,
       birthDate: new Date("2003-10-04"),
+      balance: 100_000,
     });
   }
 }

@@ -1,19 +1,25 @@
+import { NextResponse } from "next/server";
+
 export default class Response {
   static success(
     data: any,
     message?: string,
     additionalData?: { [key: string]: any }
   ) {
-    return {
+    return NextResponse.json({
       message: message || "Success",
       data,
       ...additionalData,
-    };
+    });
   }
 
-  static error(message: string) {
-    return {
-      message,
-    };
+  static error(status: number, message: string) {
+    return NextResponse.json(
+      { message },
+      {
+        status,
+        statusText: message,
+      }
+    );
   }
 }

@@ -102,13 +102,10 @@ https://any-api.vercel.app/movies
 
   ##### Error Response
 
-  - **404**
+  - Movie not found
 
-    ```json
-    {
-      "message": "Movie not found"
-    }
-    ```
+    **Status:** 404\
+    **Status Text:** Movie not found
 
     </details>
 
@@ -118,7 +115,7 @@ https://any-api.vercel.app/movies
   <summary><h3>Auth</h3></summary>
 
 - <details>
-        <summary><h4>Login</h4></summary>
+    <summary><h4>Login</h4></summary>
 
   Authenticating user
 
@@ -140,28 +137,18 @@ https://any-api.vercel.app/movies
   ```json
   {
     "message": "User login successfully",
-    "data": {
-      "id": 1,
-      "name": "Fauzan",
-      "username": "fauzan",
-      "email": "fauzan@email.com",
-      "birthDate": "2003-10-04T00:00:00.000Z"
-    },
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE3NTkyMjI3fQ.6NPkITZXL88T7KiGGDFZmUvO0glw7FodkqACRZiC0dg"
+    "data": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE3NTkyMjI3fQ.6NPkITZXL88T7KiGGDFZmUvO0glw7FodkqACRZiC0dg"
   }
   ```
 
   ##### Error Response
 
-  - **401**
+  - Invalid username or password
 
-    ```json
-    {
-      "message": "Invalid username or password"
-    }
-    ```
+    **Status:** 401\
+    **Status Text:** Invalid username or password
 
-    </details>
+  </details>
 
 - <details>
       <summary><h4>Signup</h4></summary>
@@ -194,34 +181,84 @@ https://any-api.vercel.app/movies
       "name": "Malik Matoha",
       "username": "malik",
       "email": "malik@email.com",
-      "birthDate": "2003-10-04T00:00:00.000Z"
+      "birthDate": "2003-10-04T00:00:00.000Z",
+      "balance": 100000,
+      "orders": [],
+      "createdAt": "2024-06-06T11:39:52.427Z",
+      "updatedAt": "2024-06-06T11:39:52.427Z"
     }
   }
   ```
 
   ##### Error Response
 
-  - **400**
+  - Empty fields
 
-    ```json
-    {
-      "message": "All fields are required"
-    }
-    ```
+    **Status:** 400\
+    **Status Text:** All fields are required
 
-    ```json
-    {
-      "message": "Username is already taken"
-    }
-    ```
+  - Username already taken
 
-    ```json
-    {
-      "message": "Email already taken"
-    }
-    ```
+    **Status:** 400\
+    **Status Text:** Username is already taken
+
+  - Email already taken
+
+    **Status:** 400\
+    **Status Text:** Email is already taken
 
     </details>
+
+</details>
+
+<details>
+  <summary><h3>User</h3></summary>
+
+- <details>
+    <summary><h4>Profile</h4></summary>
+
+  Returns the user profile
+
+  ```http
+  GET /me
+  ```
+
+  ##### Body
+
+  **Authorization:** `Bearer <token>`
+
+  ##### Success Response
+
+  ```json
+  {
+    "message": "User fetched successfully",
+    "data": {
+      "id": 1,
+      "name": "Fauzan",
+      "username": "fauzan",
+      "email": "fauzan@email.com",
+      "birthDate": "2003-10-04T00:00:00.000Z",
+      "balance": 100000,
+      "orders": [],
+      "createdAt": "2024-06-06T11:17:43.794Z",
+      "updatedAt": "2024-06-06T11:17:43.794Z"
+    }
+  }
+  ```
+
+  ##### Error Response
+
+  - Token not provided
+
+    **Status:** 401\
+    **Status Text:** Token not provided
+
+  - User not found
+
+    **Status:** 401\
+    **Status Text:** User not found
+
+  </details>
 
 </details>
 
@@ -257,6 +294,7 @@ type User = {
   email: string;
   password: number;
   birthDate: Date;
+  balance: number;
   createdAt: string;
   updatedAt: string;
 };

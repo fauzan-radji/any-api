@@ -1,5 +1,7 @@
-import { Movie } from "@/models";
 import { NextRequest, NextResponse } from "next/server";
+
+import { Movie } from "@/models";
+import { Response } from "@/response";
 
 interface Params {
   id: string;
@@ -9,16 +11,8 @@ export async function GET(_: NextRequest, { params }: { params: Params }) {
   const id = +params.id;
   const movie = Movie.find(id);
   if (!movie) {
-    return NextResponse.json(
-      {
-        message: "Movie not found",
-      },
-      { status: 404 }
-    );
+    return Response.error(404, "Movie not found");
   }
 
-  return NextResponse.json({
-    message: "Movie fetched successfully",
-    data: movie,
-  });
+  return Response.success(movie, "Movie fetched successfully");
 }

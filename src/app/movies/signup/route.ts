@@ -1,6 +1,7 @@
-import { User } from "@/models";
+import type { NextRequest } from "next/server";
+
 import { Response } from "@/response";
-import { NextRequest, NextResponse } from "next/server";
+import { User } from "@/models";
 import bcrypt from "bcrypt";
 
 export async function POST(request: NextRequest) {
@@ -9,21 +10,15 @@ export async function POST(request: NextRequest) {
   const birthDate = new Date(data.birthDate);
 
   if (!name || !username || !email || !password || !birthDate) {
-    return NextResponse.json(Response.error("All fields are required"), {
-      status: 400,
-    });
+    return Response.error(400, "All fields are required");
   }
 
   if (User.where("username", username).length > 0) {
-    return NextResponse.json(Response.error("Username already taken"), {
-      status: 400,
-    });
+    return Response.error(400, "Username already taken");
   }
 
   if (User.where("email", email).length > 0) {
-    return NextResponse.json(Response.error("Email already taken"), {
-      status: 400,
-    });
+    return Response.error(400, "Email already taken");
   }
 
   const crypted = await bcrypt.hash(
@@ -36,10 +31,12 @@ export async function POST(request: NextRequest) {
     username,
     email,
     password: crypted,
+    balance: 100_000,
     birthDate,
   });
 
-  return NextResponse.json(
-    Response.success(User.withoutPassword(user), "User created successfully")
+  return Response.success(
+    User.withoutPassword(user),
+    "User created successfully"
   );
 }

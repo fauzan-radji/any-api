@@ -8,6 +8,7 @@ export default class User extends Model {
     email: Field.String,
     password: Field.String,
     birthDate: Field.Date,
+    balance: Field.Number,
   };
 
   id!: number;
@@ -16,14 +17,12 @@ export default class User extends Model {
   email!: string;
   password!: string;
   birthDate!: Date;
+  balance!: number;
+  createdAt!: Date;
+  updatedAt!: Date;
 
   static withoutPassword(user: User) {
-    return {
-      id: user.id,
-      name: user.name,
-      username: user.username,
-      email: user.email,
-      birthDate: user.birthDate,
-    };
+    const { password, ...rest } = user;
+    return rest;
   }
 }
