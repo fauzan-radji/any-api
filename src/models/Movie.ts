@@ -26,13 +26,16 @@ export default class Movie extends Model {
 
   seats!: Seat[];
 
+  // hasMany
+  withoutSeats() {
+    const { seats, ...movieWithoutSeats } = this;
+    return movieWithoutSeats;
+  }
+
   toJSON() {
     return {
       ...this,
-      seats: this.seats.map((seat) => {
-        const { movie, ...rest } = seat;
-        return rest;
-      }),
+      seats: this.seats.map((seat) => seat.withoutMovie()),
     };
   }
 }

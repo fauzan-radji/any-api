@@ -1,5 +1,7 @@
 import { Field, Model } from "json-modelizer";
 
+import type Order from "./Order";
+
 export default class User extends Model {
   static _table = "users";
   static schema = {
@@ -20,6 +22,15 @@ export default class User extends Model {
   balance!: number;
   createdAt!: Date;
   updatedAt!: Date;
+
+  orders!: Order[];
+
+  toJSON() {
+    return {
+      ...this,
+      orders: this.orders.map((order) => order.withoutUser()),
+    };
+  }
 
   static withoutPassword(user: User) {
     const { password, ...rest } = user;

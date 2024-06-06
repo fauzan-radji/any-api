@@ -39,16 +39,34 @@ https://any-api.vercel.app/movies
     "totalData": 8,
     "data": [
       {
-        "id": 1,
-        "title": "Avatar",
-        "description": "A paraplegic marine dispatched to the moon Pandora on a unique mission...",
-        "price": 10000,
-        "releaseDate": "2009-12-18",
-        "ageRating": 13,
-        "poster": "https://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
-        "createdAt": "2024-01-03T05:36:01.819Z",
-        "updatedAt": "2024-01-03T05:36:01.819Z"
-      },
+      "id": 1,
+      "title": "Avatar",
+      "description": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+      "price": 10000,
+      "releaseDate": "2009-12-18T00:00:00.000Z",
+      "ageRating": 13,
+      "poster": "https://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
+      "seats": [
+        {
+          "id": 1,
+          "number": 2,
+          "isReserved": true,
+          "movieId": 1,
+          "createdAt": "2024-06-06T17:49:28.854Z",
+          "updatedAt": "2024-06-06T17:49:28.854Z"
+        },
+        {
+          "id": 2,
+          "number": 3,
+          "isReserved": true,
+          "movieId": 1,
+          "createdAt": "2024-06-06T17:49:28.876Z",
+          "updatedAt": "2024-06-06T17:49:28.876Z"
+        },
+      ],
+      "createdAt": "2024-06-06T12:00:26.003Z",
+      "updatedAt": "2024-06-06T12:00:26.003Z"
+    },
       {
         "id": 2,
         "title": "I Am Legend",
@@ -57,6 +75,24 @@ https://any-api.vercel.app/movies
         "releaseDate": "2007-12-14T00:00:00.000Z",
         "ageRating": 13,
         "poster": "https://m.media-amazon.com/images/M/MV5BYTE1ZTBlYzgtNmMyNS00ZTQ2LWE4NjEtZjUxNDJkNTg2MzlhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+        "seats": [
+          {
+            "id": 3,
+            "number": 4,
+            "isReserved": true,
+            "movieId": 2,
+            "createdAt": "2024-06-06T17:50:46.676Z",
+            "updatedAt": "2024-06-06T17:50:46.676Z"
+          },
+          {
+            "id": 4,
+            "number": 5,
+            "isReserved": true,
+            "movieId": 2,
+            "createdAt": "2024-06-06T17:50:46.715Z",
+            "updatedAt": "2024-06-06T17:50:46.715Z"
+          }
+        ]
         "createdAt": "2024-06-01T17:29:39.301Z",
         "updatedAt": "2024-06-01T17:29:39.301Z"
       }
@@ -89,13 +125,31 @@ https://any-api.vercel.app/movies
     "data": {
       "id": 1,
       "title": "Avatar",
-      "description": "A paraplegic marine dispatched to the moon Pandora on a unique mission...",
+      "description": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
       "price": 10000,
-      "releaseDate": "2009-12-18",
+      "releaseDate": "2009-12-18T00:00:00.000Z",
       "ageRating": 13,
       "poster": "https://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
-      "createdAt": "2024-01-03T05:36:01.819Z",
-      "updatedAt": "2024-01-03T05:36:01.819Z"
+      "seats": [
+        {
+          "id": 1,
+          "number": 2,
+          "isReserved": true,
+          "movieId": 1,
+          "createdAt": "2024-06-06T17:49:28.854Z",
+          "updatedAt": "2024-06-06T17:49:28.854Z"
+        },
+        {
+          "id": 2,
+          "number": 3,
+          "isReserved": true,
+          "movieId": 1,
+          "createdAt": "2024-06-06T17:49:28.876Z",
+          "updatedAt": "2024-06-06T17:49:28.876Z"
+        }
+      ],
+      "createdAt": "2024-06-06T12:00:26.003Z",
+      "updatedAt": "2024-06-06T12:00:26.003Z"
     }
   }
   ```
@@ -110,7 +164,7 @@ https://any-api.vercel.app/movies
   </details>
 
 - <details>
-      <summary><h4>Get seats of a movie</h4></summary>
+    <summary><h4>Get seats of a movie</h4></summary>
 
   Returns seats of a movie.
 
@@ -140,19 +194,19 @@ https://any-api.vercel.app/movies
       "seats": [
         {
           "id": 1,
-          "number": 1,
-          "isReserved": false,
+          "number": 2,
+          "isReserved": true,
           "movieId": 1,
-          "createdAt": "2024-06-06T12:00:26.164Z",
-          "updatedAt": "2024-06-06T12:00:26.164Z"
+          "createdAt": "2024-06-06T17:49:28.854Z",
+          "updatedAt": "2024-06-06T17:49:28.854Z"
         },
         {
           "id": 2,
-          "number": 2,
-          "isReserved": false,
+          "number": 3,
+          "isReserved": true,
           "movieId": 1,
-          "createdAt": "2024-06-06T12:00:26.173Z",
-          "updatedAt": "2024-06-06T12:00:26.173Z"
+          "createdAt": "2024-06-06T17:49:28.876Z",
+          "updatedAt": "2024-06-06T17:49:28.876Z"
         }
       ],
       "createdAt": "2024-06-06T12:00:26.003Z",
@@ -168,7 +222,159 @@ https://any-api.vercel.app/movies
     **Status:** 404\
     **Status Text:** Movie not found
 
-    </details>
+  </details>
+
+- <details>
+    <summary><h4>Books seats of a movie</h4></summary>
+
+  Books seats of a movie.
+
+  ```http
+  POST /movies/:id/seats
+  ```
+
+  ##### Parameters
+
+  | Name |   Type   | Description  |      Required      | Default |
+  | :--: | :------: | ------------ | :----------------: | :-----: |
+  | `id` | `number` | The movie ID | :heavy_check_mark: |    -    |
+
+  ##### Body
+
+  **Content-Type:** `application/json`
+
+  |  Name   |    Type    | Description            |      Required      | Default |
+  | :-----: | :--------: | ---------------------- | :----------------: | :-----: |
+  | `seats` | `number[]` | Seat number to reserve | :white_check_mark: |    -    |
+
+  ##### Success Response
+
+  ```json
+  {
+    "message": "Success",
+    "data": {
+      "id": 1,
+      "tickets": [
+        {
+          "id": 1,
+          "isCancelled": false,
+          "seatId": 1,
+          "seat": {
+            "id": 1,
+            "number": 1,
+            "isReserved": true,
+            "movieId": 1,
+            "movie": {
+              "id": 1,
+              "title": "Avatar",
+              "description": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+              "price": 10000,
+              "releaseDate": "2009-12-18T00:00:00.000Z",
+              "ageRating": 13,
+              "poster": "https://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
+              "createdAt": "2024-06-06T12:00:26.003Z",
+              "updatedAt": "2024-06-06T12:00:26.003Z"
+            },
+            "tickets": [
+              {
+                "id": 1,
+                "isCancelled": false,
+                "seatId": 1,
+                "orderId": 1,
+                "createdAt": "2024-06-06T18:07:11.338Z",
+                "updatedAt": "2024-06-06T18:07:11.338Z"
+              }
+            ],
+            "createdAt": "2024-06-06T18:07:11.328Z",
+            "updatedAt": "2024-06-06T18:07:11.328Z"
+          },
+          "orderId": 1,
+          "createdAt": "2024-06-06T18:07:11.338Z",
+          "updatedAt": "2024-06-06T18:07:11.338Z"
+        },
+        {
+          "id": 2,
+          "isCancelled": false,
+          "seatId": 2,
+          "seat": {
+            "id": 2,
+            "number": 2,
+            "isReserved": true,
+            "movieId": 1,
+            "movie": {
+              "id": 1,
+              "title": "Avatar",
+              "description": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+              "price": 10000,
+              "releaseDate": "2009-12-18T00:00:00.000Z",
+              "ageRating": 13,
+              "poster": "https://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
+              "createdAt": "2024-06-06T12:00:26.003Z",
+              "updatedAt": "2024-06-06T12:00:26.003Z"
+            },
+            "tickets": [
+              {
+                "id": 2,
+                "isCancelled": false,
+                "seatId": 2,
+                "orderId": 1,
+                "createdAt": "2024-06-06T18:07:11.359Z",
+                "updatedAt": "2024-06-06T18:07:11.359Z"
+              }
+            ],
+            "createdAt": "2024-06-06T18:07:11.347Z",
+            "updatedAt": "2024-06-06T18:07:11.347Z"
+          },
+          "orderId": 1,
+          "createdAt": "2024-06-06T18:07:11.359Z",
+          "updatedAt": "2024-06-06T18:07:11.359Z"
+        }
+      ],
+      "userId": 1,
+      "user": {
+        "id": 1,
+        "name": "Fauzan",
+        "username": "fauzan",
+        "email": "fauzan@email.com",
+        "birthDate": "2003-10-04T00:00:00.000Z",
+        "balance": 100000,
+        "createdAt": "2024-06-06T12:11:12.320Z",
+        "updatedAt": "2024-06-06T12:11:12.320Z"
+      },
+      "createdAt": "2024-06-06T18:07:11.316Z",
+      "updatedAt": "2024-06-06T18:07:11.316Z"
+    }
+  }
+  ```
+
+  ##### Error Response
+
+  - Token not provided
+
+    **Status:** 401\
+    **Status Text:** Token not provided
+
+  - User not found
+
+    **Status:** 401\
+    **Status Text:** User not found
+
+  - Movie not found
+
+    **Status:** 404\
+    **Status Text:** Movie not found
+
+  - Provided invalid or empty seats
+
+    **Status:** 400\
+    **Status Text:** Invalid seats
+
+  - Seat's already reserved
+
+    **Status:** 400\
+    **Status Text:** Seat 1 of movie Avatar is already reserved
+
+  </details>
 
 </details>
 
@@ -326,25 +532,6 @@ https://any-api.vercel.app/movies
 ## Schema
 
 <details>
-  <summary><h3>User</h3></summary>
-
-```typescript
-type User = {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  password: number;
-  birthDate: Date;
-  balance: number;
-  createdAt: string;
-  updatedAt: string;
-};
-```
-
-</details>
-
-<details>
   <summary><h3>Movie</h3></summary>
 
 ```typescript
@@ -378,6 +565,65 @@ type Seat = {
 
   movieId: number;
   movie: Movie;
+
+  tickets: Ticket[];
+};
+```
+
+</details>
+
+<details>
+  <summary><h3>Ticket</h3></summary>
+
+```typescript
+type Ticket = {
+  id: number;
+  isCancelled: boolean;
+  createdAt: string;
+  updatedAt: string;
+
+  seatId: number;
+  seat: Seat;
+
+  orderId: number;
+  order: Order;
+};
+```
+
+</details>
+
+<details>
+  <summary><h3>Order</h3></summary>
+
+```typescript
+type Order = {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+
+  tickets: Ticket[];
+
+  userId: number;
+  user: User;
+};
+```
+
+</details>
+
+<details>
+  <summary><h3>User</h3></summary>
+
+```typescript
+type User = {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  password: number;
+  birthDate: Date;
+  balance: number;
+  createdAt: string;
+  updatedAt: string;
 };
 ```
 
