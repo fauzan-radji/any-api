@@ -3,7 +3,7 @@
 ## Base URL
 
 ```
-https://any-api.vercel.app/movies
+https://any-apis.vercel.app/movies
 ```
 
 ## Endpoints
@@ -39,34 +39,34 @@ https://any-api.vercel.app/movies
     "totalData": 8,
     "data": [
       {
-      "id": 1,
-      "title": "Avatar",
-      "description": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
-      "price": 10000,
-      "releaseDate": "2009-12-18T00:00:00.000Z",
-      "ageRating": 13,
-      "poster": "https://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
-      "seats": [
-        {
-          "id": 1,
-          "number": 2,
-          "isReserved": true,
-          "movieId": 1,
-          "createdAt": "2024-06-06T17:49:28.854Z",
-          "updatedAt": "2024-06-06T17:49:28.854Z"
-        },
-        {
-          "id": 2,
-          "number": 3,
-          "isReserved": true,
-          "movieId": 1,
-          "createdAt": "2024-06-06T17:49:28.876Z",
-          "updatedAt": "2024-06-06T17:49:28.876Z"
-        },
-      ],
-      "createdAt": "2024-06-06T12:00:26.003Z",
-      "updatedAt": "2024-06-06T12:00:26.003Z"
-    },
+        "id": 1,
+        "title": "Avatar",
+        "description": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+        "price": 10000,
+        "releaseDate": "2009-12-18T00:00:00.000Z",
+        "ageRating": 13,
+        "poster": "https://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
+        "seats": [
+          {
+            "id": 1,
+            "number": 2,
+            "isReserved": true,
+            "movieId": 1,
+            "createdAt": "2024-06-06T17:49:28.854Z",
+            "updatedAt": "2024-06-06T17:49:28.854Z"
+          },
+          {
+            "id": 2,
+            "number": 3,
+            "isReserved": true,
+            "movieId": 1,
+            "createdAt": "2024-06-06T17:49:28.876Z",
+            "updatedAt": "2024-06-06T17:49:28.876Z"
+          },
+        ],
+        "createdAt": "2024-06-06T12:00:26.003Z",
+        "updatedAt": "2024-06-06T12:00:26.003Z"
+      },
       {
         "id": 2,
         "title": "I Am Legend",
@@ -239,9 +239,12 @@ https://any-api.vercel.app/movies
   | :--: | :------: | ------------ | :----------------: | :-----: |
   | `id` | `number` | The movie ID | :heavy_check_mark: |    -    |
 
-  ##### Body
+  ##### Header
 
+  **Authorization:** `Bearer <token>`\
   **Content-Type:** `application/json`
+
+  ##### Body
 
   |  Name   |    Type    | Description            |      Required      | Default |
   | :-----: | :--------: | ---------------------- | :----------------: | :-----: |
@@ -390,9 +393,11 @@ https://any-api.vercel.app/movies
   POST /login
   ```
 
-  ##### Body
+  ##### Header
 
   **Content-Type:** `application/json`
+
+  ##### Body
 
   |    Name    |   Type   | Description |      Required      | Default |
   | :--------: | :------: | ----------- | :----------------: | :-----: |
@@ -426,9 +431,11 @@ https://any-api.vercel.app/movies
   POST /signup
   ```
 
-  ##### Body
+  ##### Header
 
   **Content-Type:** `application/json`
+
+  ##### Body
 
   |    Name     |   Type   | Description |      Required      | Default |
   | :---------: | :------: | ----------- | :----------------: | :-----: |
@@ -490,7 +497,7 @@ https://any-api.vercel.app/movies
   GET /me
   ```
 
-  ##### Body
+  ##### Headers
 
   **Authorization:** `Bearer <token>`
 
@@ -526,6 +533,135 @@ https://any-api.vercel.app/movies
     **Status Text:** User not found
 
   </details>
+
+</details>
+
+<details>
+  <summary><h3>Orders</h3></summary>
+
+- <details>
+      <summary><h4>Get all Orders</h4></summary>
+
+  Returns all orders.
+
+  ```http
+  GET /orders
+  ```
+
+  ##### Header
+
+  **Authorization:** `Bearer <token>`
+
+  ##### Success Response
+
+  ```json
+  {
+    "message": "Orders fetched successfully",
+    "data": [
+      {
+        "id": 1,
+        "tickets": [
+          {
+            "id": 1,
+            "isCancelled": false,
+            "seatId": 1,
+            "seat": {
+              "id": 1,
+              "number": 4,
+              "isReserved": true,
+              "movieId": 2,
+              "movie": {
+                "id": 2,
+                "title": "I Am Legend",
+                "description": "Years after a plague kills most of humanity and transforms the rest into monsters, the sole survivor in New York City struggles valiantly to find a cure.",
+                "price": 10000,
+                "releaseDate": "2007-12-14T00:00:00.000Z",
+                "ageRating": 13,
+                "poster": "https://m.media-amazon.com/images/M/MV5BYTE1ZTBlYzgtNmMyNS00ZTQ2LWE4NjEtZjUxNDJkNTg2MzlhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+                "createdAt": "2024-06-10T08:14:50.737Z",
+                "updatedAt": "2024-06-10T08:14:50.737Z"
+              },
+              "tickets": [
+                {
+                  "id": 1,
+                  "isCancelled": false,
+                  "seatId": 1,
+                  "orderId": 1,
+                  "createdAt": "2024-06-10T10:48:29.778Z",
+                  "updatedAt": "2024-06-10T10:48:29.778Z"
+                }
+              ],
+              "createdAt": "2024-06-10T10:48:29.774Z",
+              "updatedAt": "2024-06-10T10:48:29.774Z"
+            },
+            "orderId": 1,
+            "createdAt": "2024-06-10T10:48:29.778Z",
+            "updatedAt": "2024-06-10T10:48:29.778Z"
+          },
+          {
+            "id": 2,
+            "isCancelled": false,
+            "seatId": 2,
+            "seat": {
+              "id": 2,
+              "number": 5,
+              "isReserved": true,
+              "movieId": 2,
+              "movie": {
+                "id": 2,
+                "title": "I Am Legend",
+                "description": "Years after a plague kills most of humanity and transforms the rest into monsters, the sole survivor in New York City struggles valiantly to find a cure.",
+                "price": 10000,
+                "releaseDate": "2007-12-14T00:00:00.000Z",
+                "ageRating": 13,
+                "poster": "https://m.media-amazon.com/images/M/MV5BYTE1ZTBlYzgtNmMyNS00ZTQ2LWE4NjEtZjUxNDJkNTg2MzlhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+                "createdAt": "2024-06-10T08:14:50.737Z",
+                "updatedAt": "2024-06-10T08:14:50.737Z"
+              },
+              "tickets": [
+                {
+                  "id": 2,
+                  "isCancelled": false,
+                  "seatId": 2,
+                  "orderId": 1,
+                  "createdAt": "2024-06-10T10:48:29.792Z",
+                  "updatedAt": "2024-06-10T10:48:29.792Z"
+                }
+              ],
+              "createdAt": "2024-06-10T10:48:29.784Z",
+              "updatedAt": "2024-06-10T10:48:29.784Z"
+            },
+            "orderId": 1,
+            "createdAt": "2024-06-10T10:48:29.792Z",
+            "updatedAt": "2024-06-10T10:48:29.792Z"
+          }
+        ],
+        "userId": 1,
+        "user": {
+          "id": 1,
+          "name": "Fauzan Radji",
+          "username": "fauzan",
+          "email": "fauzan@email.com",
+          "birthDate": "2024-06-10T00:00:00.000Z",
+          "balance": 100000,
+          "createdAt": "2024-06-10T11:38:37.220Z",
+          "updatedAt": "2024-06-10T11:38:37.220Z"
+        },
+        "createdAt": "2024-06-10T10:48:29.770Z",
+        "updatedAt": "2024-06-10T10:48:29.770Z"
+      }
+    ]
+  }
+  ```
+
+  ##### Error Response
+
+  - Invalid username or password
+
+    **Status:** 401\
+    **Status Text:** Invalid username or password
+
+    </details>
 
 </details>
 

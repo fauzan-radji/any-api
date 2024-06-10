@@ -4,7 +4,7 @@
   Contains any rest apis that I need, and maybe you need too.
 </p>
 <p align="center">
-  <a href="https://any-api.vercel.app">View Docs</a>
+  <a href="https://any-apis.vercel.app">View Docs</a>
   ·
   <a href="https://github.com/fauzan-radji/any-api/issues">Report Bug</a>
   ·
@@ -90,11 +90,13 @@ Any Api is a project that contains any rest apis that I need, and maybe you need
    ```
 
 7. Create a `POST` request to `http://localhost:3000/seed` with the following body to seed the database. Change `your_seed_key` with the seed key you set in the `.env.local` file. If you have better suggestions for this, please [let me know][issue].
+
    ```json
    {
      "key": "your_seed_key"
    }
    ```
+
 8. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 <p align="right"><a href="#table-of-contents">⬆️ Back to table of contents</a></p>
