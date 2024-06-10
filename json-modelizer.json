@@ -1,5 +1,5 @@
 {
-  "dataPath": "/tmp/data",
+  "datapath": "/tmp/data",
   "prettyfy": false,
   "indent": 2
 }
