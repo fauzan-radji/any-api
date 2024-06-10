@@ -1,5 +1,6 @@
 import type { NextRequest, NextResponse } from "next/server";
 
+import { JwtPayload } from "./types";
 import { Response } from "./response";
 import { User } from "./models";
 import jwt from "jsonwebtoken";
@@ -21,10 +22,10 @@ export async function getUserByToken(request: NextRequest): Promise<
     return { user: null, response: Response.error(401, "Token not provided") };
   }
 
-  const { username } = await jwt.verify(
+  const { username } = jwt.verify(
     token.split(" ")[1],
-    process.env.JWT_SECRET
-  );
+    process.env.JWT_SECRET as string
+  ) as JwtPayload;
 
   const user = User.findBy("username", username);
 

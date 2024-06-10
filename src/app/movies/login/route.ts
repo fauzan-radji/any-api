@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     const isMatch = await bcrypt.compare(password, user.password);
     if (isMatch) {
       return Response.success(
-        jwt.sign({ username: user.username }, process.env.JWT_SECRET),
+        jwt.sign({ username: user.username }, process.env.JWT_SECRET as string),
         "User login successfully"
       );
     }
