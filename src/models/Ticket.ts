@@ -32,6 +32,14 @@ export default class Ticket extends Model {
     return ticketWithoutSeatAndOrder;
   }
 
+  withoutOrderAndTicketsInSeat() {
+    const { order, ...ticketWithoutOrder } = this;
+    return {
+      ...ticketWithoutOrder,
+      seat: this.seat.withoutTicketsAndSeatsInMovie(),
+    };
+  }
+
   toJSON() {
     return {
       ...this,

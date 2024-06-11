@@ -367,6 +367,11 @@ https://any-apis.vercel.app/movies
     **Status:** 404\
     **Status Text:** Movie not found
 
+  - Balance not enough
+
+    **Status:** 400\
+    **Status Text:** Balance not enough
+
   - Provided invalid or empty seats
 
     **Status:** 400\
@@ -540,7 +545,7 @@ https://any-apis.vercel.app/movies
   <summary><h3>Orders</h3></summary>
 
 - <details>
-      <summary><h4>Get all Orders</h4></summary>
+    <summary><h4>Get all Orders</h4></summary>
 
   Returns all orders.
 
@@ -660,6 +665,98 @@ https://any-apis.vercel.app/movies
 
     **Status:** 401\
     **Status Text:** Invalid username or password
+
+  </details>
+
+- <details>
+      <summary><h4>Get an Order</h4></summary>
+
+  Returns all orders.
+
+  ```http
+  GET /orders/:id
+  ```
+
+  ##### Parameters
+
+  | Name |   Type   | Description |      Required      | Default |
+  | :--: | :------: | ----------- | :----------------: | :-----: |
+  | `id` | `number` | Order ID    | :heavy_check_mark: |    -    |
+
+  ##### Header
+
+  **Authorization:** `Bearer <token>`
+
+  ##### Success Response
+
+  ```json
+  {
+    "message": "Order fetched successfully",
+    "data": {
+      "id": 1,
+      "total": 100000,
+      "tickets": [
+        {
+          "id": 1,
+          "isCancelled": false,
+          "seatId": 1,
+          "seat": {
+            "id": 1,
+            "number": 1,
+            "isReserved": true,
+            "movieId": 1,
+            "movie": {
+              "id": 1,
+              "title": "Avatar",
+              "description": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+              "price": 10000,
+              "releaseDate": "2009-12-18T00:00:00.000Z",
+              "ageRating": 13,
+              "poster": "https://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
+              "createdAt": "2024-06-11T00:43:19.750Z",
+              "updatedAt": "2024-06-11T00:43:19.750Z"
+            },
+            "createdAt": "2024-06-11T00:51:23.470Z",
+            "updatedAt": "2024-06-11T00:51:23.470Z"
+          },
+          "orderId": 1,
+          "createdAt": "2024-06-11T00:51:23.481Z",
+          "updatedAt": "2024-06-11T00:51:23.481Z"
+        }
+      ],
+      "userId": 1,
+      "user": {
+        "id": 1,
+        "name": "fauzan",
+        "username": "fauzan",
+        "email": "fauzan@email.com",
+        "birthDate": "2024-06-11T00:00:00.000Z",
+        "balance": 100000,
+        "createdAt": "2024-06-11T00:46:12.151Z",
+        "updatedAt": "2024-06-11T00:46:12.151Z"
+      },
+      "createdAt": "2024-06-11T00:51:23.464Z",
+      "updatedAt": "2024-06-11T00:51:23.464Z"
+    }
+  }
+  ```
+
+  ##### Error Response
+
+  - Token not provided
+
+    **Status:** 401\
+    **Status Text:** Token not provided
+
+  - User not found
+
+    **Status:** 401\
+    **Status Text:** User not found
+
+  - Invalid id or user doesn't have access to the order
+
+    **Status:** 404\
+    **Status Text:** Order not found
 
     </details>
 

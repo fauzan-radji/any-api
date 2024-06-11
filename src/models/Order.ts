@@ -1,12 +1,16 @@
-import { Model } from "json-modelizer";
+import { Field, Model } from "json-modelizer";
+
 import type Ticket from "./Ticket";
 import User from "./User";
 
 export default class Order extends Model {
   static _table = "orders";
-  static schema = {};
+  static schema = {
+    total: Field.Number,
+  };
 
   id!: number;
+  total!: number;
   createdAt!: Date;
   updatedAt!: Date;
 
@@ -31,7 +35,9 @@ export default class Order extends Model {
     const { orders, ...userWithoutOrders } = User.withoutPassword(this.user);
     return {
       ...this,
-      tickets: this.tickets.map((ticket) => ticket.withoutOrder()),
+      tickets: this.tickets.map((ticket) =>
+        ticket.withoutOrderAndTicketsInSeat()
+      ),
       user: userWithoutOrders,
     };
   }

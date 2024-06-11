@@ -33,6 +33,11 @@ export default class Seat extends Model {
     return seatWithoutTickets;
   }
 
+  withoutTicketsAndSeatsInMovie() {
+    const { tickets, ...seatWithoutTickets } = this;
+    return { ...seatWithoutTickets, movie: this.movie.withoutSeats() };
+  }
+
   toJSON() {
     return {
       ...this,

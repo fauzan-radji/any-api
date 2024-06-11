@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { Movie } from "@/models";
+import { MovieSeeder } from "@/seeder";
 import { Response } from "@/response";
 
 interface Params {
@@ -8,6 +9,8 @@ interface Params {
 }
 
 export async function GET(_: NextRequest, { params }: { params: Params }) {
+  if (Movie.count() === 0) MovieSeeder.seed();
+
   const id = +params.id;
   const movie = Movie.find(id);
   if (!movie) {
