@@ -11,6 +11,8 @@ https://any-apis.vercel.app/movies
 <details>
   <summary><h3>Movies</h3></summary>
 
+<!-- Start | Get all movies -->
+
 - <details>
     <summary><h4>Get all movies</h4></summary>
 
@@ -102,6 +104,10 @@ https://any-apis.vercel.app/movies
 
   </details>
 
+<!-- End | Get all movies -->
+
+<!-- Start | Get a movie -->
+
 - <details>
     <summary><h4>Get a movie</h4></summary>
 
@@ -159,9 +165,13 @@ https://any-apis.vercel.app/movies
   - Movie not found
 
     **Status:** 404\
-    **Status Text:** Movie not found
+     **Status Text:** Movie not found
 
   </details>
+
+<!-- End | Get a movie -->
+
+<!-- Start | Get seats movie -->
 
 - <details>
     <summary><h4>Get seats of a movie</h4></summary>
@@ -223,6 +233,10 @@ https://any-apis.vercel.app/movies
     **Status Text:** Movie not found
 
   </details>
+
+<!-- End | Get seats movie -->
+
+<!-- Start | Books seats of a movie -->
 
 - <details>
     <summary><h4>Books seats of a movie</h4></summary>
@@ -384,10 +398,14 @@ https://any-apis.vercel.app/movies
 
   </details>
 
+<!-- End | Books seats of a movie -->
+
 </details>
 
 <details>
   <summary><h3>Auth</h3></summary>
+
+<!-- Start | Login -->
 
 - <details>
     <summary><h4>Login</h4></summary>
@@ -427,13 +445,17 @@ https://any-apis.vercel.app/movies
 
   </details>
 
+<!-- End | Login -->
+
+<!-- Start | Register -->
+
 - <details>
-      <summary><h4>Signup</h4></summary>
+    <summary><h4>Register</h4></summary>
 
   Registering a new user
 
   ```http
-  POST /signup
+  POST /register
   ```
 
   ##### Header
@@ -486,12 +508,16 @@ https://any-apis.vercel.app/movies
     **Status:** 400\
     **Status Text:** Email is already taken
 
-    </details>
+  </details>
+
+<!-- End | Register -->
 
 </details>
 
 <details>
   <summary><h3>User</h3></summary>
+
+<!-- Start | Profile -->
 
 - <details>
     <summary><h4>Profile</h4></summary>
@@ -539,13 +565,17 @@ https://any-apis.vercel.app/movies
 
   </details>
 
+<!-- End | Profile -->
+
 </details>
 
 <details>
   <summary><h3>Orders</h3></summary>
 
+<!-- Start | Get all orders -->
+
 - <details>
-    <summary><h4>Get all Orders</h4></summary>
+    <summary><h4>Get all orders</h4></summary>
 
   Returns all orders.
 
@@ -661,17 +691,26 @@ https://any-apis.vercel.app/movies
 
   ##### Error Response
 
-  - Invalid username or password
+  - Token not provided
 
     **Status:** 401\
-    **Status Text:** Invalid username or password
+    **Status Text:** Token not provided
+
+  - User not found
+
+    **Status:** 401\
+    **Status Text:** User not found
 
   </details>
 
-- <details>
-      <summary><h4>Get an Order</h4></summary>
+<!-- End | Get all orders -->
 
-  Returns all orders.
+<!-- Start | Get an order -->
+
+- <details>
+    <summary><h4>Get an order</h4></summary>
+
+  Returns an order by its ID.
 
   ```http
   GET /orders/:id
@@ -758,7 +797,193 @@ https://any-apis.vercel.app/movies
     **Status:** 404\
     **Status Text:** Order not found
 
-    </details>
+  </details>
+
+<!-- End | Get an order -->
+
+</details>
+
+<details>
+  <summary><h3>Tickets</h3></summary>
+
+<!-- Start | Get all tickets -->
+
+- <details>
+  <summary><h4>Get all tickets</h4></summary>
+
+  Returns all tickets.
+
+  ```http
+  GET /tickets
+  ```
+
+  ##### Header
+
+  **Authorization:** `Bearer <token>`
+
+  ##### Success Response
+
+  ```json
+  {
+    "message": "Tickets fetched successfully",
+    "data": [
+      {
+        "id": 1,
+        "isCancelled": false,
+        "seatId": 1,
+        "seat": {
+          "id": 1,
+          "number": 1,
+          "isReserved": true,
+          "movieId": 1,
+          "movie": {
+            "id": 1,
+            "title": "Avatar",
+            "description": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+            "price": 10000,
+            "releaseDate": "2009-12-18T00:00:00.000Z",
+            "ageRating": 13,
+            "poster": "https://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
+            "createdAt": "2024-06-11T00:43:19.750Z",
+            "updatedAt": "2024-06-11T00:43:19.750Z"
+          },
+          "createdAt": "2024-06-11T00:51:23.470Z",
+          "updatedAt": "2024-06-11T00:51:23.470Z"
+        },
+        "orderId": 1,
+        "order": {
+          "id": 1,
+          "total": 100000,
+          "userId": 1,
+          "user": {
+            "id": 1,
+            "name": "fauzan",
+            "username": "fauzan",
+            "email": "fauzan@email.com",
+            "birthDate": "2024-06-11T00:00:00.000Z",
+            "balance": 100000,
+            "createdAt": "2024-06-11T00:46:12.151Z",
+            "updatedAt": "2024-06-11T00:46:12.151Z"
+          },
+          "createdAt": "2024-06-11T00:51:23.464Z",
+          "updatedAt": "2024-06-11T00:51:23.464Z"
+        },
+        "createdAt": "2024-06-11T00:51:23.481Z",
+        "updatedAt": "2024-06-11T00:51:23.481Z"
+      }
+    ]
+  }
+  ```
+
+  ##### Error Response
+
+  - Token not provided
+
+    **Status:** 401\
+    **Status Text:** Token not provided
+
+  - User not found
+
+    **Status:** 401\
+    **Status Text:** User not found
+
+  </details>
+
+<!-- End | Get all tickets -->
+
+<!-- Start | Get a ticket -->
+
+- <details>
+  <summary><h4>Get a ticket</h4></summary>
+
+  Returns a ticket by its ID.
+
+  ```http
+  GET /tickets/:id
+  ```
+
+  ##### Parameters
+
+  | Name |   Type   | Description |      Required      | Default |
+  | :--: | :------: | ----------- | :----------------: | :-----: |
+  | `id` | `number` | Ticket ID   | :heavy_check_mark: |    -    |
+
+  ##### Header
+
+  **Authorization:** `Bearer <token>`
+
+  ##### Success Response
+
+  ```json
+  {
+    "message": "Ticket fetched successfully",
+    "data": {
+      "id": 1,
+      "isCancelled": false,
+      "seatId": 1,
+      "seat": {
+        "id": 1,
+        "number": 1,
+        "isReserved": true,
+        "movieId": 1,
+        "movie": {
+          "id": 1,
+          "title": "Avatar",
+          "description": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+          "price": 10000,
+          "releaseDate": "2009-12-18T00:00:00.000Z",
+          "ageRating": 13,
+          "poster": "https://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
+          "createdAt": "2024-06-11T00:43:19.750Z",
+          "updatedAt": "2024-06-11T00:43:19.750Z"
+        },
+        "createdAt": "2024-06-11T00:51:23.470Z",
+        "updatedAt": "2024-06-11T00:51:23.470Z"
+      },
+      "orderId": 1,
+      "order": {
+        "id": 1,
+        "total": 100000,
+        "userId": 1,
+        "user": {
+          "id": 1,
+          "name": "fauzan",
+          "username": "fauzan",
+          "email": "fauzan@email.com",
+          "birthDate": "2024-06-11T00:00:00.000Z",
+          "balance": 100000,
+          "createdAt": "2024-06-11T00:46:12.151Z",
+          "updatedAt": "2024-06-11T00:46:12.151Z"
+        },
+        "createdAt": "2024-06-11T00:51:23.464Z",
+        "updatedAt": "2024-06-11T00:51:23.464Z"
+      },
+      "createdAt": "2024-06-11T00:51:23.481Z",
+      "updatedAt": "2024-06-11T00:51:23.481Z"
+    }
+  }
+  ```
+
+  ##### Error Response
+
+  - Token not provided
+
+    **Status:** 401\
+    **Status Text:** Token not provided
+
+  - User not found
+
+    **Status:** 401\
+    **Status Text:** User not found
+
+  - Invalid id or user doesn't have access to the ticket
+
+    **Status:** 404\
+    **Status Text:** Ticket not found
+
+  </details>
+
+<!-- End | Get a ticket -->
 
 </details>
 
@@ -857,6 +1082,8 @@ type User = {
   balance: number;
   createdAt: string;
   updatedAt: string;
+
+  orders: Order[];
 };
 ```
 

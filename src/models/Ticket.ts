@@ -43,8 +43,8 @@ export default class Ticket extends Model {
   toJSON() {
     return {
       ...this,
-      seat: this.seat.withoutTickets(),
-      order: this.order.withoutTickets(),
+      seat: this.seat.withoutTicketsAndSeatsInMovie(),
+      order: this.order.withoutTicketsAndOrderInUser(),
     };
   }
 }

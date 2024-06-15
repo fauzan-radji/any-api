@@ -25,6 +25,12 @@ export default class User extends Model {
 
   orders!: Order[];
 
+  // hasMany
+  withoutOrders() {
+    const { orders, ...userWithoutOrders } = User.withoutPassword(this);
+    return userWithoutOrders;
+  }
+
   toJSON() {
     return {
       ...this,

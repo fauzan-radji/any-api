@@ -31,6 +31,14 @@ export default class Order extends Model {
     return orderWithoutUser;
   }
 
+  withoutTicketsAndOrderInUser() {
+    const { tickets, ...orderWithoutTickets } = this;
+    return {
+      ...orderWithoutTickets,
+      user: this.user.withoutOrders(),
+    };
+  }
+
   toJSON() {
     const { orders, ...userWithoutOrders } = User.withoutPassword(this.user);
     return {
