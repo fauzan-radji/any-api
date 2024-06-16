@@ -35,3 +35,12 @@ export async function getUserByToken(request: NextRequest): Promise<
 
   return { user, response: null };
 }
+
+export function unique<T extends number | string>(arr: T[]): T[] {
+  const set: Record<T, boolean> = {} as Record<T, boolean>;
+  return arr.filter((item) => {
+    if (set.hasOwnProperty(item)) return false;
+    set[item] = true;
+    return true;
+  });
+}

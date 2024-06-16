@@ -3,7 +3,7 @@ import { Movie, Order, Seat, Ticket } from "@/models";
 import { MovieSeeder } from "@/seeder";
 import type { NextRequest } from "next/server";
 import { Response } from "@/response";
-import { getUserByToken } from "@/utils";
+import { getUserByToken, unique } from "@/utils";
 
 interface Params {
   id: string;
@@ -36,7 +36,8 @@ export async function POST(
     return Response.error(404, "Movie not found");
   }
 
-  const { seats } = await request.json();
+  const body = (await request.json()) as { seats: number[] };
+  const seats = unique(body.seats);
   const totalPrice = seats.length * movie.price;
   if (totalPrice > user.balance) {
     return Response.error(400, "Balance not enough");

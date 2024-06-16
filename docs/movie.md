@@ -782,6 +782,134 @@ https://any-apis.vercel.app/movies
 
 <!-- End | Get an order -->
 
+<!-- Start | Cancel an order -->
+
+- <details>
+        <summary><h4>Cancel an order</h4></summary>
+
+  Returns an order by its ID.
+
+  ```http
+  DELETE /orders/:id
+  ```
+
+  ##### Parameters
+
+  | Name |   Type   | Description |      Required      | Default |
+  | :--: | :------: | ----------- | :----------------: | :-----: |
+  | `id` | `number` | Order ID    | :heavy_check_mark: |    -    |
+
+  ##### Header
+
+  **Authorization:** `Bearer <token>`
+
+  ##### Success Response
+
+  ```json
+  {
+    "message": "Order cancelled and refunded successfully",
+    "data": {
+      "id": 1,
+      "total": 20000,
+      "tickets": [
+        {
+          "id": 1,
+          "isCancelled": true,
+          "seatId": 1,
+          "seat": {
+            "id": 1,
+            "number": 1,
+            "isReserved": false,
+            "movieId": 1,
+            "movie": {
+              "id": 1,
+              "title": "Avatar",
+              "description": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+              "price": 10000,
+              "releaseDate": "2009-12-18T00:00:00.000Z",
+              "ageRating": 13,
+              "poster": "https://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
+              "createdAt": "2024-06-16T11:44:12.668Z",
+              "updatedAt": "2024-06-16T11:44:12.668Z"
+            },
+            "createdAt": "2024-06-16T12:12:01.496Z",
+            "updatedAt": "2024-06-16T12:12:23.968Z"
+          },
+          "orderId": 1,
+          "createdAt": "2024-06-16T12:12:01.505Z",
+          "updatedAt": "2024-06-16T12:12:23.946Z"
+        },
+        {
+          "id": 2,
+          "isCancelled": true,
+          "seatId": 2,
+          "seat": {
+            "id": 2,
+            "number": 2,
+            "isReserved": false,
+            "movieId": 1,
+            "movie": {
+              "id": 1,
+              "title": "Avatar",
+              "description": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+              "price": 10000,
+              "releaseDate": "2009-12-18T00:00:00.000Z",
+              "ageRating": 13,
+              "poster": "https://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
+              "createdAt": "2024-06-16T11:44:12.668Z",
+              "updatedAt": "2024-06-16T11:44:12.668Z"
+            },
+            "createdAt": "2024-06-16T12:12:01.514Z",
+            "updatedAt": "2024-06-16T12:12:24.025Z"
+          },
+          "orderId": 1,
+          "createdAt": "2024-06-16T12:12:01.524Z",
+          "updatedAt": "2024-06-16T12:12:23.994Z"
+        }
+      ],
+      "userId": 1,
+      "user": {
+        "id": 1,
+        "name": "Fauzan Radji",
+        "username": "fauzan",
+        "email": "fauzan@email.com",
+        "birthDate": "2024-06-16T00:00:00.000Z",
+        "balance": 100000,
+        "createdAt": "2024-06-16T11:44:20.673Z",
+        "updatedAt": "2024-06-16T12:12:24.075Z"
+      },
+      "createdAt": "2024-06-16T12:12:01.492Z",
+      "updatedAt": "2024-06-16T12:12:01.492Z"
+    }
+  }
+  ```
+
+  ##### Error Response
+
+  - Token not provided
+
+    **Status:** 401\
+    **Status Text:** Token not provided
+
+  - User not found
+
+    **Status:** 401\
+    **Status Text:** User not found
+
+  - Invalid id or user doesn't have access to the order
+
+    **Status:** 404\
+    **Status Text:** Order not found
+
+  - Order already cancelled
+
+    **Status:** 400\
+    **Status Text:** Order is already cancelled
+
+    </details>
+
+<!-- End | Cancel an order -->
+
 </details>
 
 <details>
