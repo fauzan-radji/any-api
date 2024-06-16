@@ -270,15 +270,16 @@ https://any-apis.vercel.app/movies
   {
     "message": "Success",
     "data": {
-      "id": 1,
+      "id": 3,
+      "total": 20000,
       "tickets": [
         {
-          "id": 1,
+          "id": 11,
           "isCancelled": false,
-          "seatId": 1,
+          "seatId": 11,
           "seat": {
-            "id": 1,
-            "number": 1,
+            "id": 11,
+            "number": 20,
             "isReserved": true,
             "movieId": 1,
             "movie": {
@@ -289,33 +290,23 @@ https://any-apis.vercel.app/movies
               "releaseDate": "2009-12-18T00:00:00.000Z",
               "ageRating": 13,
               "poster": "https://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
-              "createdAt": "2024-06-06T12:00:26.003Z",
-              "updatedAt": "2024-06-06T12:00:26.003Z"
+              "createdAt": "2024-06-16T09:16:30.257Z",
+              "updatedAt": "2024-06-16T09:16:30.257Z"
             },
-            "tickets": [
-              {
-                "id": 1,
-                "isCancelled": false,
-                "seatId": 1,
-                "orderId": 1,
-                "createdAt": "2024-06-06T18:07:11.338Z",
-                "updatedAt": "2024-06-06T18:07:11.338Z"
-              }
-            ],
-            "createdAt": "2024-06-06T18:07:11.328Z",
-            "updatedAt": "2024-06-06T18:07:11.328Z"
+            "createdAt": "2024-06-16T09:22:44.932Z",
+            "updatedAt": "2024-06-16T09:22:44.932Z"
           },
-          "orderId": 1,
-          "createdAt": "2024-06-06T18:07:11.338Z",
-          "updatedAt": "2024-06-06T18:07:11.338Z"
+          "orderId": 3,
+          "createdAt": "2024-06-16T09:22:45.088Z",
+          "updatedAt": "2024-06-16T09:22:45.088Z"
         },
         {
-          "id": 2,
+          "id": 12,
           "isCancelled": false,
-          "seatId": 2,
+          "seatId": 12,
           "seat": {
-            "id": 2,
-            "number": 2,
+            "id": 12,
+            "number": 21,
             "isReserved": true,
             "movieId": 1,
             "movie": {
@@ -326,25 +317,15 @@ https://any-apis.vercel.app/movies
               "releaseDate": "2009-12-18T00:00:00.000Z",
               "ageRating": 13,
               "poster": "https://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
-              "createdAt": "2024-06-06T12:00:26.003Z",
-              "updatedAt": "2024-06-06T12:00:26.003Z"
+              "createdAt": "2024-06-16T09:16:30.257Z",
+              "updatedAt": "2024-06-16T09:16:30.257Z"
             },
-            "tickets": [
-              {
-                "id": 2,
-                "isCancelled": false,
-                "seatId": 2,
-                "orderId": 1,
-                "createdAt": "2024-06-06T18:07:11.359Z",
-                "updatedAt": "2024-06-06T18:07:11.359Z"
-              }
-            ],
-            "createdAt": "2024-06-06T18:07:11.347Z",
-            "updatedAt": "2024-06-06T18:07:11.347Z"
+            "createdAt": "2024-06-16T09:22:45.285Z",
+            "updatedAt": "2024-06-16T09:22:45.285Z"
           },
-          "orderId": 1,
-          "createdAt": "2024-06-06T18:07:11.359Z",
-          "updatedAt": "2024-06-06T18:07:11.359Z"
+          "orderId": 3,
+          "createdAt": "2024-06-16T09:22:45.391Z",
+          "updatedAt": "2024-06-16T09:22:45.391Z"
         }
       ],
       "userId": 1,
@@ -354,12 +335,12 @@ https://any-apis.vercel.app/movies
         "username": "fauzan",
         "email": "fauzan@email.com",
         "birthDate": "2003-10-04T00:00:00.000Z",
-        "balance": 100000,
-        "createdAt": "2024-06-06T12:11:12.320Z",
-        "updatedAt": "2024-06-06T12:11:12.320Z"
+        "balance": 0,
+        "createdAt": "2024-06-16T09:16:30.542Z",
+        "updatedAt": "2024-06-16T09:22:44.827Z"
       },
-      "createdAt": "2024-06-06T18:07:11.316Z",
-      "updatedAt": "2024-06-06T18:07:11.316Z"
+      "createdAt": "2024-06-16T09:22:44.842Z",
+      "updatedAt": "2024-06-16T09:22:44.842Z"
     }
   }
   ```
