@@ -985,6 +985,105 @@ https://any-apis.vercel.app/movies
 
 <!-- End | Get a ticket -->
 
+<!-- Start | Cancel a ticket -->
+
+- <details>
+    <summary><h4>Cancel a ticket</h4></summary>
+
+  Cancel a ticket by its ID.
+
+  ```http
+  DELETE /tickets/:id
+  ```
+
+  ##### Parameters
+
+  | Name |   Type   | Description |      Required      | Default |
+  | :--: | :------: | ----------- | :----------------: | :-----: |
+  | `id` | `number` | Ticket ID   | :heavy_check_mark: |    -    |
+
+  ##### Header
+
+  **Authorization:** `Bearer <token>`
+
+  ##### Success Response
+
+  ```json
+  {
+    "message": "Ticket cancelled and refunded successfully",
+    "data": {
+      "id": 2,
+      "isCancelled": true,
+      "seatId": 11,
+      "seat": {
+        "id": 11,
+        "number": 3,
+        "isReserved": false,
+        "movieId": 4,
+        "movie": {
+          "id": 4,
+          "title": "The Avengers",
+          "description": "Earth's mightiest heroes must come together and learn to fight as a team if they are to stop the mischievous Loki and his alien army from enslaving humanity.",
+          "price": 10000,
+          "releaseDate": "2012-05-04T00:00:00.000Z",
+          "ageRating": 13,
+          "poster": "https://ia.media-imdb.com/images/M/MV5BMTk2NTI1MTU4N15BMl5BanBnXkFtZTcwODg0OTY0Nw@@._V1_SX300.jpg",
+          "createdAt": "2024-06-11T00:43:19.764Z",
+          "updatedAt": "2024-06-11T00:43:19.764Z"
+        },
+        "createdAt": "2024-06-16T08:51:42.442Z",
+        "updatedAt": "2024-06-16T09:06:05.062Z"
+      },
+      "orderId": 2,
+      "order": {
+        "id": 2,
+        "total": 40000,
+        "userId": 1,
+        "user": {
+          "id": 1,
+          "name": "fauzan",
+          "username": "fauzan",
+          "email": "fauzan@email.com",
+          "birthDate": "2024-06-11T00:00:00.000Z",
+          "balance": 170000,
+          "createdAt": "2024-06-11T00:46:12.151Z",
+          "updatedAt": "2024-06-16T09:06:05.180Z"
+        },
+        "createdAt": "2024-06-16T08:51:42.419Z",
+        "updatedAt": "2024-06-16T08:51:42.419Z"
+      },
+      "createdAt": "2024-06-16T08:51:42.518Z",
+      "updatedAt": "2024-06-16T08:51:42.518Z"
+    }
+  }
+  ```
+
+  ##### Error Response
+
+  - Token not provided
+
+    **Status:** 401\
+    **Status Text:** Token not provided
+
+  - User not found
+
+    **Status:** 401\
+    **Status Text:** User not found
+
+  - Invalid id or user doesn't have access to the ticket
+
+    **Status:** 404\
+    **Status Text:** Ticket not found
+
+  - Ticket already cancelled
+
+    **Status:** 400\
+    **Status Text:** Ticket is already cancelled
+
+  </details>
+
+<!-- End | Cancel a ticket -->
+
 </details>
 
 ## Schema
