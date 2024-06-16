@@ -785,7 +785,7 @@ https://any-apis.vercel.app/movies
 <!-- Start | Cancel an order -->
 
 - <details>
-        <summary><h4>Cancel an order</h4></summary>
+    <summary><h4>Cancel an order</h4></summary>
 
   Returns an order by its ID.
 
@@ -1192,6 +1192,122 @@ https://any-apis.vercel.app/movies
   </details>
 
 <!-- End | Cancel a ticket -->
+
+</details>
+
+<details>
+  <summary><h3>Balance</h3></summary>
+
+<!-- Start | Top up balance -->
+
+- <details>
+    <summary><h4>Top up balance</h4></summary>
+
+  Top up user's balance.
+
+  ```http
+  POST /balance
+  ```
+
+  ##### Header
+
+  **Authorization:** `Bearer <token>`
+
+  ##### Body
+
+  |   Name   |   Type   | Description      |      Required      | Default |
+  | :------: | :------: | ---------------- | :----------------: | :-----: |
+  | `amount` | `number` | Amount to top up | :white_check_mark: |    -    |
+
+  ##### Success Response
+
+  ```json
+  {
+    "message": "Balance topped up successfully",
+    "data": {
+      "balance": 200000
+    }
+  }
+  ```
+
+  ##### Error Response
+
+  - Token not provided
+
+    **Status:** 401\
+    **Status Text:** Token not provided
+
+  - User not found
+
+    **Status:** 401\
+    **Status Text:** User not found
+
+  - Empty, negative, or invalid amount
+
+    **Status:** 400\
+    **Status Text:** Invalid amount
+
+  </details>
+
+<!-- End | Top up balance -->
+
+<!-- Start | Withdraw balance -->
+
+- <details>
+    <summary><h4>Withdraw balance</h4></summary>
+
+  Withdraw user's balance.
+
+  ```http
+  DELETE /balance
+  ```
+
+  ##### Header
+
+  **Authorization:** `Bearer <token>`
+
+  ##### Body
+
+  |   Name   |   Type   | Description        |      Required      | Default |
+  | :------: | :------: | ------------------ | :----------------: | :-----: |
+  | `amount` | `number` | Amount to withdraw | :white_check_mark: |    -    |
+
+  ##### Success Response
+
+  ```json
+  {
+    "message": "Balance withdrawn successfully",
+    "data": {
+      "balance": 100000
+    }
+  }
+  ```
+
+  ##### Error Response
+
+  - Token not provided
+
+    **Status:** 401\
+    **Status Text:** Token not provided
+
+  - User not found
+
+    **Status:** 401\
+    **Status Text:** User not found
+
+  - Empty, negative, or invalid amount
+
+    **Status:** 400\
+    **Status Text:** Invalid amount
+
+  - Balance not enough
+
+    **Status:** 400\
+    **Status Text:** Insufficient balance
+
+  </details>
+
+<!-- End | Withdraw balance -->
 
 </details>
 

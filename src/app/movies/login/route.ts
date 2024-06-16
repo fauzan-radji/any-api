@@ -15,6 +15,7 @@ export async function POST(request: NextRequest) {
   for (const user of users) {
     const isMatch = await bcrypt.compare(password, user.password);
     if (isMatch) {
+      // FIXME: return { token: token } instead of just string token
       return Response.success(
         jwt.sign({ username: user.username }, process.env.JWT_SECRET as string),
         "User login successfully"
