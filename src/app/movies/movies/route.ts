@@ -4,22 +4,26 @@ import type { NextRequest } from "next/server";
 import { Response } from "@/response";
 
 export async function GET(request: NextRequest) {
-  if(Movie.count() === 0) MovieSeeder.seed();
+  if (Movie.count() === 0) MovieSeeder.seed();
 
   const url = new URL(request.url);
-  const page = Math.max(+(url.searchParams.get("page") || 1), 1);
-  const limit = Math.max(+(url.searchParams.get("limit") || 10), 1);
-  const query = url.searchParams.get("query") || "";
+  const limitParam = +(url.searchParams.get("limit") || 10);
+  const pageParam = +(url.searchParams.get("page") || 1);
+  const queryParam = url.searchParams.get("query") || "";
+
+  const limit = Math.max(limitParam, 1);
+  const totalData = Movie.count();
+  const totalPage = Math.ceil(totalData / limit);
+  const page = Math.max(Math.min(pageParam, totalPage), 1);
 
   const movies = Movie.paginate(page, limit, (movie) =>
-    movie.title.toLowerCase().includes(query.toLowerCase())
+    movie.title.toLowerCase().includes(queryParam.toLowerCase())
   );
-  const moviesCount = Movie.count();
 
   return Response.success(movies, "Movies fetched successfully", {
     page,
     limit,
-    totalPage: Math.ceil(moviesCount / limit),
-    totalData: moviesCount,
+    totalPage,
+    totalData,
   });
 }
